@@ -6,6 +6,11 @@ const App = () => {
   const [bill,setBill] = useState(NaN)
   const [tip,setTip] = useState("")
   const [friendTip,setFriendTip] = useState("")
+  function resetAll(){
+    setBill(0);
+    setTip("")
+    setFriendTip("")
+  }
   return (
     <div>
       <Bill bill={bill} setBill={setBill}/>
@@ -27,7 +32,8 @@ const App = () => {
           <option value="20">Absolutely amazing (20%)</option>
         </select>
       </Service>
-      <Calculation bill={bill} tip={tip} friendTip={friendTip}></Calculation>
+      {bill > 0 && <Calculation bill={bill} tip={tip} friendTip={friendTip} resetAll={resetAll}></Calculation>}
+      
     </div>
   );
 };
